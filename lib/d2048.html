@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<link rel="import" href="../../packages/polymer/polymer.html">
+
+  <polymer-element name="d2048-game">
+    <template>
+      <link rel="stylesheet" href="d2048.css">
+      <h1>Jeu du 2048</h1>
+   <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-528cb7626fa47264" async="async"></script>
+      <p>But du jeu:<br />
+      Le but du 2048 est de regrouper les cases ayant les mêmes valeurs pour <br />
+      qu'elles s'additionnent. Plus vous addtionnerez de grandes valeurs, plus<br />
+      votre pointage grandira rapidement! <br />
+      <b>Saurez-vous parvenir à la case ultime qui affichera 2048?</b></p>
+      <div id="scoreboard">
+        <div id="score">{{ score }}</div>
+      </div>
+      <div id="info">
+        <button id="new-game" on-click="{{ start }}">Nouvelle partie</button>
+      </div>
+      <div id="container">
+        <template if="{{ gameOver }}">
+          <div id="game-over">
+            <h1>Partie terminée!</h1>
+          </div>
+        </template>
+        <template if="{{ gameWon }}">
+          <div id="game-won">
+            <h1>Vous avez gagné!!</h1>
+          </div>
+        </template>
+        <div id="grid">
+          <template repeat="{{ row in ticks }}"><!-- 
+         --><div><!-- 
+           --><template repeat="{{ col in ticks }}"><!-- 
+               --><div class="cell"></div><!-- 
+           --></template><!-- 
+         --></div><!-- 
+       --></template>        
+        </div>
+        <div id="tiles"></div>
+      </div>
+       <p>Quelle taille de grille souhaitez-vous?</p>
+  <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <input name="tool-selector" id="tool-selector-1" value="1" type="radio" checked>
+    <label for="tool-selector-1">4x4 cases</label>
+    <input name="tool-selector" id="tool-selector-2" value="2" type="radio">
+    <label for="tool-selector-2">5x5 cases</label>
+    <input name="tool-selector" id="tool-selector-3" value="3" type="radio">
+    <label for="tool-selector-3">6x6 cases</label>
+    <button id="changer" on-click="{{ loadTicks }}">changer grille</button>
+   <br/>
+   <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_native_toolbox"></div>
+  </fieldset>
+    </template>
+  </polymer-element>
+
+  <polymer-element name="d2048-tile">
+    <template>{{ value }}</template>
+  </polymer-element><br />
+  
+  
+<script type="application/dart" src="d2048.dart"></script>  
+  
+</html>
